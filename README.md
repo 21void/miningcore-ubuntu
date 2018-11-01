@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/21void/miningcore-ubuntu.svg?branch=master)](https://travis-ci.org/21void/miningcore-ubuntu)
 
-## miningCore-ubuntu
+## miningcore-ubuntu
 
 Unofficial [Miningcore](https://github.com/coinfoundry/miningcore) docker-image using smaller debian:stretch-slim as base image
 
-## Usage
+## usage
 
 The image expects a valid pool configuration file as volume argument:
 
