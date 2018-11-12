@@ -10,8 +10,11 @@ RUN cd /tmp && git clone https://github.com/coinfoundry/miningcore && cd miningc
 FROM debian:stretch-slim
 RUN useradd -s /bin/bash -u 1111 -m miningcore && \
     apt-get update -y && \
+    apt-get install -y wget gnupg && \
+    wget https://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/Debian_9.0/Release.key -O- | apt-key add && \
+    echo "deb http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/Debian_9.0/ ./" >> /etc/apt/sources.list && \
     apt-get autoremove -y && apt-get clean autoclean && \
-    apt-get -y install libboost-system1.62.0 libboost-date-time1.62.0 libssl1.0.2 libsodium18 libicu57 libzmq5-dev && \
+    apt-get -y install libboost-system1.62.0 libboost-date-time1.62.0 libssl1.0.2 libsodium18 libicu57 libczmq-dev libzmq5-dev && \
     mkdir /logger && chmod 777 /logger && chown -R miningcore:miningcore /logger && \
     rm -rf /var/lib/{apt,dpkg,cache,log} /tmp/* /var/tmp/*
 
